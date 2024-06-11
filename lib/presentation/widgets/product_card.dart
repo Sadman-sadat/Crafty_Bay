@@ -1,6 +1,7 @@
 
 import 'package:crafty_bay/data/models/products_model.dart';
 import 'package:crafty_bay/presentation/screens/product_details_screen.dart';
+import 'package:crafty_bay/presentation/state_holders/add_to_wish_list_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/Add_to_wish_button.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,19 @@ class ProductCard extends StatelessWidget {
                             Text('\$${product.star}'),
                           ],
                         ),
-                        AddToWishButton(showAddToWishList: showAddToWishList,),
+                        GetBuilder<AddToWishListController>(
+                            builder: (addToWishListController) {
+                              if(addToWishListController.inProgress){
+                                return Transform.scale(
+                                  scale: 0.4,
+                                  child: const CircularProgressIndicator(),);
+                              }
+                              return AddToWishButton(showAddToWishList: true, onTap: () {
+                                //need to fix. all of the wish button is showing circular indicator on tap
+                                addToWishListController.addToWishList(product.id!);
+                              },);
+                            }
+                        ),
                       ],
                     )
                   ],

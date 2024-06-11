@@ -80,8 +80,9 @@ class NetworkCaller {
     }
   }
 
-  static void _goToSignInScreen() {
+  static Future<void> _goToSignInScreen() async {
     //Navigator.push(CraftyBay.navigationKey.currentState!.context, MaterialPageRoute(builder: (context) => const EmailVerificationScreen(),),);
+    await UserAuthController.clearUserData();
     getx.Get.to(() => const EmailVerificationScreen());
   }
 }
