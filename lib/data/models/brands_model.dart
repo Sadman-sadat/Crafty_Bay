@@ -1,4 +1,3 @@
-
 class Brand {
   int? id;
   String? brandName;

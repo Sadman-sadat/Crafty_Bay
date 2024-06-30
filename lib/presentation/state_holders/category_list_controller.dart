@@ -1,4 +1,3 @@
-
 import 'package:crafty_bay/data/models/category_list_model.dart';
 import 'package:crafty_bay/data/models/network_response.dart';
 import 'package:crafty_bay/data/network_caller/network_caller.dart';

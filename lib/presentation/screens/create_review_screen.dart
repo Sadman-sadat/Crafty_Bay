@@ -1,5 +1,5 @@
 import 'package:crafty_bay/data/models/create_product_review_model.dart';
-import 'package:crafty_bay/presentation/state_holders/create_product_review_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/widgets/create_product_review_controller.dart';
 import 'package:crafty_bay/presentation/widgets/centered_circular_progress_indicator.dart';
 import 'package:crafty_bay/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';

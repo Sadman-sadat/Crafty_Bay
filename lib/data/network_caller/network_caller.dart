@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:crafty_bay/data/models/network_response.dart';
-import 'package:crafty_bay/presentation/screens/email_verification_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/user_auth_controller.dart';
+import 'package:crafty_bay/presentation/screens/auth/email_verification_screen.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/user_auth_controller.dart';
 import 'package:get/get.dart' as getx;
 import 'package:http/http.dart';
 

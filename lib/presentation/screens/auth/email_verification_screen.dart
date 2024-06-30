@@ -1,5 +1,5 @@
-import 'package:crafty_bay/presentation/screens/otp_verification_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/verify_email_controller.dart';
+import 'package:crafty_bay/presentation/screens/auth/otp_verification_screen.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/verify_email_controller.dart';
 import 'package:crafty_bay/presentation/utility/constants.dart';
 import 'package:crafty_bay/presentation/widgets/app_logo.dart';
 import 'package:crafty_bay/presentation/widgets/centered_circular_progress_indicator.dart';

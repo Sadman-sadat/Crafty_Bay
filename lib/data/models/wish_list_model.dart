@@ -1,4 +1,3 @@
-
 import 'package:crafty_bay/data/models/wish_item_model.dart';
 
 class WishListModel {

@@ -1,4 +1,3 @@
-
 import 'package:crafty_bay/data/models/products_model.dart';
 
 class ProductDetailsModel {

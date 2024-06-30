@@ -1,5 +1,5 @@
 import 'package:crafty_bay/presentation/screens/main_bottom_nav_bar_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/create_profile_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/create_profile_controller.dart';
 import 'package:crafty_bay/presentation/widgets/app_logo.dart';
 import 'package:crafty_bay/presentation/widgets/centered_circular_progress_indicator.dart';
 import 'package:crafty_bay/presentation/widgets/snack_bar_message.dart';

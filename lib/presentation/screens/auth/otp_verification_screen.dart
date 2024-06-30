@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:crafty_bay/presentation/screens/complete_profile_screen.dart';
+import 'package:crafty_bay/presentation/screens/auth/complete_profile_screen.dart';
 import 'package:crafty_bay/presentation/screens/main_bottom_nav_bar_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/read_profile_controller.dart';
-import 'package:crafty_bay/presentation/state_holders/verify_email_controller.dart';
-import 'package:crafty_bay/presentation/state_holders/verify_otp_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/read_profile_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/verify_email_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/verify_otp_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/app_logo.dart';
 import 'package:crafty_bay/presentation/widgets/snack_bar_message.dart';

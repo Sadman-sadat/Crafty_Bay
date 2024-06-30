@@ -1,8 +1,5 @@
-import 'package:crafty_bay/presentation/screens/complete_profile_screen.dart';
-import 'package:crafty_bay/presentation/screens/email_verification_screen.dart';
-import 'package:crafty_bay/presentation/screens/home_screen.dart';
 import 'package:crafty_bay/presentation/screens/main_bottom_nav_bar_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/user_auth_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/user_auth_controller.dart';
 import 'package:crafty_bay/presentation/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

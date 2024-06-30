@@ -1,14 +1,13 @@
 import 'package:crafty_bay/data/models/cart_model.dart';
 import 'package:crafty_bay/data/models/products_details_model.dart';
 import 'package:crafty_bay/presentation/screens/review_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/add_to_cart_controller.dart';
-import 'package:crafty_bay/presentation/state_holders/add_to_wish_list_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/widgets/add_to_cart_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/widgets/add_to_wish_list_controller.dart';
 import 'package:crafty_bay/presentation/state_holders/products_details_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/add_to_wish_button.dart';
 import 'package:crafty_bay/presentation/widgets/bottomActonCard.dart';
 import 'package:crafty_bay/presentation/widgets/centered_circular_progress_indicator.dart';
-import 'package:crafty_bay/presentation/widgets/color_picker.dart';
 import 'package:crafty_bay/presentation/widgets/product_image_carousel_slider.dart';
 import 'package:crafty_bay/presentation/widgets/size_picker.dart';
 import 'package:crafty_bay/presentation/widgets/snack_bar_message.dart';

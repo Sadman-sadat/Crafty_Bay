@@ -1,7 +1,6 @@
-
 import 'package:crafty_bay/data/models/products_model.dart';
 import 'package:crafty_bay/presentation/screens/product_details_screen.dart';
-import 'package:crafty_bay/presentation/state_holders/add_to_wish_list_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/widgets/add_to_wish_list_controller.dart';
 import 'package:crafty_bay/presentation/state_holders/wish_list_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/add_to_wish_button.dart';

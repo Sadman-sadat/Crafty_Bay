@@ -1,7 +1,7 @@
 import 'package:crafty_bay/presentation/screens/create_review_screen.dart';
-import 'package:crafty_bay/presentation/screens/email_verification_screen.dart';
+import 'package:crafty_bay/presentation/screens/auth/email_verification_screen.dart';
 import 'package:crafty_bay/presentation/state_holders/review_list_controller.dart';
-import 'package:crafty_bay/presentation/state_holders/user_auth_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth/user_auth_controller.dart';
 import 'package:crafty_bay/presentation/widgets/bottomActonCard.dart';
 import 'package:crafty_bay/presentation/widgets/product_review_card.dart';
 import 'package:flutter/material.dart';
