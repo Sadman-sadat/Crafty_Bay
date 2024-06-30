@@ -3,7 +3,6 @@ import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/network_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:crafty_bay/data/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {

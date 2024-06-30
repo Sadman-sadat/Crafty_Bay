@@ -10,8 +10,7 @@ import 'package:crafty_bay/presentation/state_holders/special_product_list_contr
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../state_holders/home_slider_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/home_slider_controller.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {
   const MainBottomNavBarScreen({super.key});
@@ -31,7 +30,6 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   @override
   void initState() {
     super.initState();
-
     // _homeSliderController.getSliders();
     // _categoryListController.getCategoryList();
     // _popularProductListController.getPopularProductList();

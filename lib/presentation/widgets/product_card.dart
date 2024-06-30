@@ -95,9 +95,6 @@ class ProductCard extends StatelessWidget {
                                 } else {
                                   Get.find<AddToWishListController>().addToWishList(product.id!);
                                 }
-
-                                //need to fix. all of the wish button is showing circular indicator on tap
-                                //addToWishListController.addToWishList(product.id!);
                               },);
                             }
                         ),
