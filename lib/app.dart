@@ -22,7 +22,8 @@ class _CraftyBayState extends State<CraftyBay> {
       home: const SplashScreen(),
       initialBinding: ControllerBinder(),
       theme: ThemeData(
-       colorSchemeSeed: AppColors.primaryColor,
+        colorSchemeSeed: AppColors.primaryColor,
+        scaffoldBackgroundColor: Colors.white,
         progressIndicatorTheme: const ProgressIndicatorThemeData(
           color: AppColors.primaryColor,
         ),

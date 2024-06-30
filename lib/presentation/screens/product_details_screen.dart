@@ -5,12 +5,13 @@ import 'package:crafty_bay/presentation/state_holders/add_to_cart_controller.dar
 import 'package:crafty_bay/presentation/state_holders/add_to_wish_list_controller.dart';
 import 'package:crafty_bay/presentation/state_holders/products_details_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
-import 'package:crafty_bay/presentation/widgets/Add_to_wish_button.dart';
+import 'package:crafty_bay/presentation/widgets/add_to_wish_button.dart';
 import 'package:crafty_bay/presentation/widgets/bottomActonCard.dart';
 import 'package:crafty_bay/presentation/widgets/centered_circular_progress_indicator.dart';
 import 'package:crafty_bay/presentation/widgets/color_picker.dart';
 import 'package:crafty_bay/presentation/widgets/product_image_carousel_slider.dart';
 import 'package:crafty_bay/presentation/widgets/size_picker.dart';
+import 'package:crafty_bay/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
@@ -166,7 +167,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               color: _selectedColor ?? '',
                               size: _selectedSize ?? '',
                               quantity: _counterValue);
-                          addToCartController.addToCart(cartModel);
+                          addToCartController.addToCart(cartModel).then((result) {
+                            if(result){
+                              showSnackMessage(context, 'Added to cart');
+                            } else {
+                              showSnackMessage(context, addToCartController.errorMessage);
+                            }
+                          });
                         },
                       );
                     }
@@ -196,7 +203,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
         TextButton(
           onPressed: () {
-            Get.to(() => const ReviewScreen());
+            Get.to(() => ReviewScreen(productId: widget.productId,));
           },
           child: const Text('Reviews'),
         ),
@@ -207,7 +214,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   scale: 0.4,
                   child: const CircularProgressIndicator(),);
             }
-            return AddToWishButton(showAddToWishList: true, onTap: () {
+            return WishButton(
+              // API issue no wish/fav in api
+              // add wish controller instead
+              showAddToWishList: true,
+              //isSelected: productDetails.product.,
+              onTap: () {
               addToWishListController.addToWishList(widget.productId);
             },);
           }

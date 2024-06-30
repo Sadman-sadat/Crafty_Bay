@@ -5,7 +5,7 @@ import 'package:crafty_bay/data/network_caller/network_caller.dart';
 import 'package:crafty_bay/data/utility/urls.dart';
 import 'package:get/get.dart';
 
-class ProductDetailsController extends GetxController{
+class ProductDetailsController extends GetxController {
   bool _inProgress = false;
   String _errorMessage = '';
   ProductDetailsModel _productDetailsModel = ProductDetailsModel();
@@ -20,13 +20,20 @@ class ProductDetailsController extends GetxController{
     bool isSuccess = false;
     _inProgress = true;
     update();
-    final NetworkResponse response = await NetworkCaller.getRequest(url: Urls.productDetails(productId));
+    final NetworkResponse response =
+        await NetworkCaller.getRequest(url: Urls.productDetails(productId));
     if (response.isSuccess) {
-      if(_errorMessage.isNotEmpty){
+      if (_errorMessage.isNotEmpty) {
         _errorMessage = '';
       }
-      _productDetailsModel =
-          ProductDetailsWrapperModel.fromJson(response.responseData).productDetails!.first;
+      if (ProductDetailsWrapperModel.fromJson(response.responseData)
+          .productDetails!
+          .isNotEmpty) {
+        _productDetailsModel =
+            ProductDetailsWrapperModel.fromJson(response.responseData)
+                .productDetails!
+                .first;
+      }
     } else {
       _errorMessage = response.errorMessage;
     }

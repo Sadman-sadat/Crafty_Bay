@@ -2,18 +2,20 @@
 import 'package:crafty_bay/data/models/products_model.dart';
 import 'package:crafty_bay/presentation/screens/product_details_screen.dart';
 import 'package:crafty_bay/presentation/state_holders/add_to_wish_list_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/wish_list_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
-import 'package:crafty_bay/presentation/widgets/Add_to_wish_button.dart';
+import 'package:crafty_bay/presentation/widgets/add_to_wish_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    super.key,  this.showAddToWishList = true, required this.product,
+    super.key,  this.showAddToWishList = true, required this.product, this.onWishlistTap,
   });
 
   final bool showAddToWishList;
   final Product product;
+  final VoidCallback? onWishlistTap;
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +79,26 @@ class ProductCard extends StatelessWidget {
                             Text('\$${product.star}'),
                           ],
                         ),
-                        GetBuilder<AddToWishListController>(
-                            builder: (addToWishListController) {
-                              if(addToWishListController.inProgress){
+                        const SizedBox(
+                          width: 05,
+                        ),
+                        GetBuilder<WishListController>(
+                            builder: (wishListController) {
+                              bool isInWishlist = wishListController.wishList.any((item) => item.product?.id == product.id);
+                              if(wishListController.inProgress){
                                 return Transform.scale(
                                   scale: 0.4,
                                   child: const CircularProgressIndicator(),);
                               }
-                              return AddToWishButton(showAddToWishList: true, onTap: () {
+                              return WishButton(showAddToWishList: showAddToWishList, onTap: onWishlistTap ?? () {
+                                if (isInWishlist) {
+                                  wishListController.removeWishList(product.id!);
+                                } else {
+                                  Get.find<AddToWishListController>().addToWishList(product.id!);
+                                }
+
                                 //need to fix. all of the wish button is showing circular indicator on tap
-                                addToWishListController.addToWishList(product.id!);
+                                //addToWishListController.addToWishList(product.id!);
                               },);
                             }
                         ),

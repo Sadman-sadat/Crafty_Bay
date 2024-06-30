@@ -1,10 +1,10 @@
+import 'package:crafty_bay/data/models/create_product_review_model.dart';
+import 'package:get/get.dart';
 import 'package:crafty_bay/data/models/network_response.dart';
 import 'package:crafty_bay/data/network_caller/network_caller.dart';
 import 'package:crafty_bay/data/utility/urls.dart';
-import 'package:crafty_bay/presentation/state_holders/user_auth_controller.dart';
-import 'package:get/get.dart';
 
-class VerifyOtpController extends GetxController {
+class CreateProductReviewController extends GetxController {
   bool _inProgress = false;
   String _errorMessage = '';
 
@@ -12,19 +12,22 @@ class VerifyOtpController extends GetxController {
 
   String get errorMessage => _errorMessage;
 
-  Future<bool> verifyOtp(String email, String otp) async {
+  Future<bool> createReview(CreateProductReviewModel productReview) async {
     bool isSuccess = false;
     _inProgress = true;
     update();
-    final NetworkResponse response =
-        await NetworkCaller.getRequest(url: Urls.verifyOtp(email, otp),
-        fromAuth: true);
+
+    final NetworkResponse response = await NetworkCaller.postRequest(
+      url: Urls.createProductReview,
+      body: productReview.toJson(),
+    );
+
     if (response.isSuccess) {
-      await UserAuthController.saveUserToken(response.responseData['data']);
       isSuccess = true;
     } else {
       _errorMessage = response.errorMessage;
     }
+
     _inProgress = false;
     update();
     return isSuccess;

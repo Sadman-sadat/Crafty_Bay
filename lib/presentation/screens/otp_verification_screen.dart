@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:crafty_bay/presentation/screens/complete_profile_screen.dart';
 import 'package:crafty_bay/presentation/screens/main_bottom_nav_bar_screen.dart';
 import 'package:crafty_bay/presentation/state_holders/read_profile_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/verify_email_controller.dart';
 import 'package:crafty_bay/presentation/state_holders/verify_otp_controller.dart';
 import 'package:crafty_bay/presentation/utility/app_colors.dart';
 import 'package:crafty_bay/presentation/widgets/app_logo.dart';
@@ -27,6 +28,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   Timer? _buttonTimer;
 
   final ReadProfileController _readProfileController = Get.find<ReadProfileController>();
+  final VerifyEmailController _verifyEmailController = Get.find<VerifyEmailController>();
 
   @override
   void initState() {
@@ -46,10 +48,17 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   void _resetTimer() {
-    _buttonTimer?.cancel();
-    _remainingTime.value = _initialTime;
-    _isButtonEnabled.value = false;
-    _startCountDownTimer();
+    _verifyEmailController.verifyEmail(widget.email).then((success) {
+      if (success) {
+        _buttonTimer?.cancel();
+        _remainingTime.value = _initialTime;
+        _isButtonEnabled.value = false;
+        _startCountDownTimer();
+        showSnackMessage(context, 'OTP resent successfully');
+      } else {
+        showSnackMessage(context, _verifyEmailController.errorMessage);
+      }
+    });
   }
 
   @override
@@ -75,7 +84,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 if (verifyOtpController.inProgress) {
                   return const CircularProgressIndicator();
                 }
-            
+
                 return ElevatedButton(
                   onPressed: () async {
                     final result = await verifyOtpController.verifyOtp(
@@ -83,9 +92,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     if (result) {
                       final hasProfile = await _readProfileController.readProfile();
                       if(hasProfile) {
-                        Get.to(() => const CompleteProfileScreen());
-                      } else {
                         Get.offAll(() => const MainBottomNavBarScreen());
+                      } else {
+                        Get.to(() => const CompleteProfileScreen());
                       }
                     } else {
                       if(mounted){
@@ -156,7 +165,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   @override
   void dispose() {
-    _otpTEController.dispose();
     _buttonTimer?.cancel();
     super.dispose();
   }

@@ -1,26 +1,27 @@
 import 'package:crafty_bay/data/models/network_response.dart';
+import 'package:crafty_bay/data/models/review_item_model.dart';
+import 'package:crafty_bay/data/models/review_list_model.dart';
 import 'package:crafty_bay/data/network_caller/network_caller.dart';
 import 'package:crafty_bay/data/utility/urls.dart';
-import 'package:crafty_bay/presentation/state_holders/user_auth_controller.dart';
 import 'package:get/get.dart';
 
-class VerifyOtpController extends GetxController {
+class ReviewListController extends GetxController {
   bool _inProgress = false;
   String _errorMessage = '';
+  List<ReviewItemModel> _reviewList = [];
 
   bool get inProgress => _inProgress;
-
   String get errorMessage => _errorMessage;
+  List<ReviewItemModel> get reviewList => _reviewList;
 
-  Future<bool> verifyOtp(String email, String otp) async {
+  Future<bool> getReviewList(int productId) async {
     bool isSuccess = false;
     _inProgress = true;
     update();
     final NetworkResponse response =
-        await NetworkCaller.getRequest(url: Urls.verifyOtp(email, otp),
-        fromAuth: true);
+        await NetworkCaller.getRequest(url: Urls.reviewListByProduct(productId));
     if (response.isSuccess) {
-      await UserAuthController.saveUserToken(response.responseData['data']);
+      _reviewList = ReviewListModel.fromJson(response.responseData).reviewList ?? [];
       isSuccess = true;
     } else {
       _errorMessage = response.errorMessage;

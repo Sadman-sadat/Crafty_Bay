@@ -7,12 +7,18 @@ import 'package:get/get.dart' as getx;
 import 'package:http/http.dart';
 
 class NetworkCaller {
-  static Future<NetworkResponse> getRequest({required String url, bool fromAuth = false}) async {
+  static Future<NetworkResponse> getRequest(
+      {required String url, bool fromAuth = false}) async {
     try {
       log(url);
       log(UserAuthController.accessToken);
-      final Response response = await get(Uri.parse(url),
-        headers: {'accept': 'application/json', 'token' : UserAuthController.accessToken},);
+      final Response response = await get(
+        Uri.parse(url),
+        headers: {
+          'accept': 'application/json',
+          'token': UserAuthController.accessToken
+        },
+      );
       log(response.statusCode.toString());
       log(response.body.toString());
       if (response.statusCode == 200) {
@@ -50,7 +56,12 @@ class NetworkCaller {
       log(url);
       log(UserAuthController.accessToken);
       final Response response = await post(Uri.parse(url),
-          headers: {'accept': 'application/json', 'token' : UserAuthController.accessToken}, body: jsonEncode(body));
+          headers: {
+            'accept': 'application/json',
+            'token': UserAuthController.accessToken
+          },
+          //jsonEncode doesn't work
+          body: body);
       log(response.statusCode.toString());
       log(response.body.toString());
       if (response.statusCode == 200) {

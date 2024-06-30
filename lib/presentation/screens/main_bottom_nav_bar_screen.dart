@@ -1,4 +1,3 @@
-
 import 'package:crafty_bay/presentation/screens/cart_list_screen.dart';
 import 'package:crafty_bay/presentation/screens/category_list_screen.dart';
 import 'package:crafty_bay/presentation/screens/home_screen.dart';
@@ -32,11 +31,18 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   @override
   void initState() {
     super.initState();
-    _homeSliderController.getSliders();
-    _categoryListController.getCategoryList();
-    _popularProductListController.getPopularProductList();
-    _newProductListController.getNewProductList();
-    _specialProductListController.getSpecialProductList();
+    // _homeSliderController.getSliders();
+    // _categoryListController.getCategoryList();
+    // _popularProductListController.getPopularProductList();
+    // _newProductListController.getNewProductList();
+    // _specialProductListController.getSpecialProductList();
+
+    // Delaying the call to getCartList to prevent calling setState during build
+    Future.microtask(() => _homeSliderController.getSliders());
+    Future.microtask(() => _categoryListController.getCategoryList());
+    Future.microtask(() => _popularProductListController.getPopularProductList());
+    Future.microtask(() => _newProductListController.getNewProductList());
+    Future.microtask(() =>_specialProductListController.getSpecialProductList());
   }
 
   final List<Widget> _screens = [
