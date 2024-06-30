@@ -31,6 +31,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   @override
   void initState() {
     super.initState();
+
     // _homeSliderController.getSliders();
     // _categoryListController.getCategoryList();
     // _popularProductListController.getPopularProductList();
