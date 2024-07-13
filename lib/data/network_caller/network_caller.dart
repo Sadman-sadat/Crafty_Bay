@@ -15,7 +15,7 @@ class NetworkCaller {
       final Response response = await get(
         Uri.parse(url),
         headers: {
-          'accept': 'application/json',
+          'Accept': 'application/json',
           'token': UserAuthController.accessToken
         },
       );
@@ -57,11 +57,12 @@ class NetworkCaller {
       log(UserAuthController.accessToken);
       final Response response = await post(Uri.parse(url),
           headers: {
-            'accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'token': UserAuthController.accessToken
           },
           //jsonEncode doesn't work
-          body: body);
+          body: jsonEncode(body));
       log(response.statusCode.toString());
       log(response.body.toString());
       if (response.statusCode == 200) {
